@@ -85,8 +85,7 @@ body {
 .page-header-container {
   display: flex;
   align-items: center;
-  padding-top: 25.5px;
-  padding-bottom: 25.5px;
+  padding: 0;
 }
 .nav {
   display: flex;
@@ -136,7 +135,7 @@ body {
 .menu-link.link::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   display: block;
   width: 100%;
@@ -152,7 +151,9 @@ body {
 .menu-link.link:hover::after,
 .menu-link.link:focus::after {
   background-color: var(--color-ocean);
+  transition: background-color var(--transition-duration-and-func);
 }
+
 .contact {
   display: block;
   font-style: normal;
@@ -451,7 +452,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--transition-duration-and-func);
   width: 408px;
   height: 576px;
   background-color: var(--color-dairy);
@@ -524,7 +526,9 @@ body {
   border-radius: 4px;
   background-color: var(--color-cloud);
   transition: color var(--transition-duration-and-func),
-    background-color var(--transition-duration-and-func);
+    background-color var(--transition-duration-and-func),
+    border var(--transition-duration-and-func),
+    box-shadow var(--transition-duration-and-func);
   padding: 12px 24px;
 }
 
@@ -583,14 +587,13 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  transform: translate(0, 100%);
-  transition: color var(--transition-duration-and-func),
-    background-color var(--transition-duration-and-func);
+  transform: translate(0, 101%);
+  transition: transform var(--transition-duration-and-func);
   color: var(--color-cloud);
   padding: 40px 32px;
   background-color: var(--color-iris);
 }
-.portfolio-link:hover .overlay,
-.portfolio-link:focus .overlay {
+.portfolio-item:hover .overlay,
+.portfolio-item:focus .overlay {
   transform: translate(0, 0);
 }
